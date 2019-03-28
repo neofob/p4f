@@ -1,5 +1,5 @@
-A place to pracetice Ansible stuff
-==================================
+A place to practice Ansible stuff
+=================================
 *Different silly Ansible tasks to automate on things*
 
 
