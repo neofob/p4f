@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  vars_files:
+    - vars/glusterfs.yml
+
+  tasks:
+    - include_tasks: tasks/update.yml
+    - include_tasks: tasks/install_boinc.yml
+
+  # Install glusterfs-{server, client}
+  roles:
+  - geerlingguy.glusterfs

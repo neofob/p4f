@@ -1,0 +1,9 @@
+---
+# Install boinc package and its recommended packages
+- name: Install BOINC
+  become: yes
+  apt:
+    force_apt_get: yes
+    install_recommends: yes
+    update_cache: yes
+    name: boinc
