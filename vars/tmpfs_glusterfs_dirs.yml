@@ -1,0 +1,7 @@
+---
+# Default Glusterfs configuration
+
+glusterfs_mount_dir: /mnt/gvol
+glusterfs_brick_dir: /data/glusterfs/tmpfs/brick0
+glusterfs_brick_name: tvol
+glusterfs_default_release: bionic

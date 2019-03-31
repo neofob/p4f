@@ -1,0 +1,5 @@
+---
+# directory structure vars for tmpfs setup
+mount_point: /data/glusterfs/tmpfs/brick0
+tmpfs_size: 512M
+
