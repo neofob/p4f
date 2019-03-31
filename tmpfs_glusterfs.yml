@@ -14,4 +14,4 @@
   tasks:
     - include_tasks: tasks/setup_mnt.yml
     - include_tasks: tasks/mnt_tmpfs.yml
-
+    - include_tasks: tasks/create_gluster_vol.yml
