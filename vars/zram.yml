@@ -1,0 +1,10 @@
+---
+zram_num_devices: 4
+zram_cpus: 1 # set this to 4 or more with multi-core cpu
+zram_size: "4G"
+zram_fstype: "ext4"
+zram_dev: "/dev/zram1" # highly opinioned here; save zram0 for swap or something
+zram_mountpoint: "/data/glusterfs/zvol/brick0"
+
+glusterfs_vol_name: zvol
+glusterfs_brick_dir: /data/glusterfs/zvol/brick0

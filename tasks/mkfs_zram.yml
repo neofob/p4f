@@ -1,0 +1,5 @@
+---
+- name: mkfs a zram device
+  filesystem: "{{ zram_dev }}"
+  force: yes
+  fstype: "{{ zram_fstype }}"

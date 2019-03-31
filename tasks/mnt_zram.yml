@@ -1,0 +1,8 @@
+---
+- name: mount zram device
+  become: yes
+  mount:
+    path: "{{ zram_mountpoint }}"
+    src: "{{ zram_dev }}"
+    # fstype:
+    state: mounted

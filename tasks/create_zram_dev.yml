@@ -1,0 +1,9 @@
+---
+- name: Set maximum compressing stream for zram
+  become: yes
+  command: echo "{{ zram_cpus }}" > /sys/block/zram1/max_comp_streams
+
+# disksize is human readable: 1G, 512M..etc.
+- name: Set zram device size
+  become: yes
+  command: echo "{{ zram_size }}" > /sys/block/zram1/disksize

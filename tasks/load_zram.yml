@@ -1,0 +1,6 @@
+---
+- name: Load zram module
+  modprobe:
+    name: zram
+    state: present
+    params: "num_devices={{ zram_num_devices }}"
