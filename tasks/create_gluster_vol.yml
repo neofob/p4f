@@ -4,8 +4,6 @@
     state: present
     name: "{{ glusterfs_vol_name }}"
     bricks: "{{ glusterfs_brick_dir }}"
-    cluster:
-      # Figure out how to use groups['all']
-      # List of IPs
+    cluster: "{{ ansible_play_hosts }}"
     force: true
   run_once: true

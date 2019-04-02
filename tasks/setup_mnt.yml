@@ -1,8 +1,0 @@
----
-- name: Setup mount points
-  become: yes
-  file:
-    path: "{{ mount_point }}"
-    recurse: yes
-    state: directory
-    mode: 0755

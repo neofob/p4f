@@ -1,9 +1,8 @@
 ---
-- hosts: gserver
+- hosts: all
   become: yes
   vars_files:
-    - vars/tmpfs_dirs.yml
-    - vars/tmpfs_glusterfs_dirs.yml
+    - vars/tmpfs_glusterfs.yml
   vars:
     - glusterfs_ppa_version: "6"
       
@@ -12,6 +11,6 @@
     - geerlingguy.glusterfs
 
   tasks:
-    - include_tasks: tasks/setup_mnt.yml
-    - include_tasks: tasks/mnt_tmpfs.yml
+    - include_tasks: tasks/setup_tmpfs.yml
     - include_tasks: tasks/create_gluster_vol.yml
+    - include_tasks: tasks/mount_gluster.yml
