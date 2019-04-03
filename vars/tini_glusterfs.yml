@@ -1,0 +1,5 @@
+---
+# Default Glusterfs configuration
+glusterfs_mount_dir: /mnt/tinivol
+glusterfs_brick_dir: /data/glusterfs/tinivol/brick0
+glusterfs_vol_name: tinivol

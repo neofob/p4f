@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: yes
+  vars_files:
+    - vars/tini_glusterfs.yml
+  vars:
+    - glusterfs_ppa_version: "6"
+
+  # install glusterfs-{server, client}
+  roles:
+    - geerlingguy.glusterfs
+
+  tasks:
+    - include_tasks: tasks/setup_tini.yml
+    - include_tasks: tasks/create_gluster_vol.yml
+    - include_tasks: tasks/mount_gluster.yml
