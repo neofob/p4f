@@ -1,5 +1,10 @@
 ---
+- name: Debug mkfs a zram device
+  debug:
+    msg: "zram = {{ zram_dev}} zram_fstype = {{ zram_fstype }}"
+
 - name: mkfs a zram device
-  filesystem: "{{ zram_dev }}"
-  force: yes
-  fstype: "{{ zram_fstype }}"
+  filesystem:
+    dev: /dev/{{ zram_dev }}
+    fstype: "{{ zram_fstype }}"
+    force: yes

@@ -1,4 +1,18 @@
 ---
+# Ref: https://github.com/itconsultis/ansible-provision-debian-docker/blob/master/tasks/main.yml
+
+- name: query linux kernel release
+  shell: uname -r | xargs
+  register: kernel_release
+
+- name: query debian distro
+  shell: lsb_release -i | cut -d':' -f 2 | awk '{print tolower($0)}' | xargs
+  register: debian_distro
+
+- name: install linux-image-extra (ubuntu)
+  when: debian_distro.stdout == "ubuntu"
+  apt: name=linux-modules-extra-{{ kernel_release.stdout }} state=present
+
 - name: Load zram module
   modprobe:
     name: zram

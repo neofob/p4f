@@ -1,9 +1,15 @@
 ---
+- name: Debug set max stream and zram_size`
+  debug:
+    msg: "zram_cpus = {{ zram_cpus }} zram_size = {{ zram_size }}"
+
+- name: Reset the zram device
+  shell: echo 1 > /sys/block/{{ zram_dev }}/reset
+
 - name: Set maximum compressing stream for zram
-  become: yes
-  command: echo "{{ zram_cpus }}" > /sys/block/zram1/max_comp_streams
+  shell: echo "{{ zram_cpus }}" > /sys/block/{{ zram_dev }}/max_comp_streams
 
 # disksize is human readable: 1G, 512M..etc.
 - name: Set zram device size
-  become: yes
-  command: echo "{{ zram_size }}" > /sys/block/zram1/disksize
+  shell: echo "{{ zram_size }}" > /sys/block/{{ zram_dev }}/disksize
+

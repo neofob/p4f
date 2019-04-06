@@ -1,8 +1,8 @@
 ---
-- hosts: gserver
+- hosts: all
   become: yes
   vars_files:
-    - vars/zram.yml
+    - vars/zram_glusterfs.yml
   vars:
     - glusterfs_ppa_version: "6"
 
@@ -16,3 +16,4 @@
     - include_tasks: tasks/mkfs_zram.yml
     - include_tasks: tasks/mnt_zram.yml
     - include_tasks: tasks/create_gluster_vol.yml
+    - include_tasks: tasks/mount_gluster.yml

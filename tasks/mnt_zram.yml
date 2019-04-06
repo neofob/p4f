@@ -1,8 +1,5 @@
 ---
 - name: mount zram device
   become: yes
-  mount:
-    path: "{{ zram_mountpoint }}"
-    src: "{{ zram_dev }}"
-    # fstype:
-    state: mounted
+  shell: mount -t {{ zram_fstype }} /dev/{{ zram_dev }} {{ zram_mountpoint }} || true
+  # mount module will modify /etc/fstab
