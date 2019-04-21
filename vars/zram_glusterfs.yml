@@ -8,3 +8,4 @@ zram_mountpoint: /data/glusterfs/zvol/brick0
 
 glusterfs_vol_name: zvol
 glusterfs_brick_dir: /data/glusterfs/zvol/brick0
+glusterfs_mount_dir: /mnt/zvol
