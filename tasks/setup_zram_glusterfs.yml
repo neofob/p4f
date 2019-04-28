@@ -1,0 +1,74 @@
+---
+# Ref: https://github.com/itconsultis/ansible-provision-debian-docker/blob/master/tasks/main.yml
+
+- name: Query Linux kernel release
+  shell: uname -r | xargs
+  register: kernel_release
+
+- name: Query Debian distro
+  shell: lsb_release -i | cut -d':' -f 2 | awk '{print tolower($0)}' | xargs
+  register: debian_distro
+
+- name: Install linux-image-extra (ubuntu)
+  when: debian_distro.stdout == "ubuntu"
+  apt: name=linux-modules-extra-{{ kernel_release.stdout }} state=present
+
+- name: Load zram module
+  modprobe:
+    name: zram
+    state: present
+    params: "num_devices={{ zram_num_devices }}"
+
+- name: Debug set max stream and zram_size
+  debug:
+    msg: "zram_cpus = {{ zram_cpus }} zram_size = {{ zram_size }}"
+
+- name: Reset the zram device
+  shell: echo 1 > /sys/block/{{ zram_dev }}/reset
+
+- name: Set maximum compressing stream for zram
+  shell: echo "{{ zram_cpus }}" > /sys/block/{{ zram_dev }}/max_comp_streams
+
+# disksize is human readable: 1G, 512M..etc.
+- name: Set zram device size
+  shell: echo "{{ zram_size }}" > /sys/block/{{ zram_dev }}/disksize
+
+- name: Debug mkfs a zram device
+  debug:
+    msg: "zram = {{ zram_dev}} zram_fstype = {{ zram_fstype }}"
+
+- name: mkfs a zram device
+  filesystem:
+    dev: /dev/{{ zram_dev }}
+    fstype: "{{ zram_fstype }}"
+    force: yes
+
+- name: Setup zram mount points
+  file:
+    path: "{{ zram_mountpoint }}"
+    state: directory
+    mode: 0755
+
+# Use shell instead of mount so that /etc/fstab is not modified 
+# mount module will modify /etc/fstab
+- name: mount zram device
+  shell: mount -t {{ zram_fstype }} /dev/{{ zram_dev }} {{ zram_mountpoint }} || true
+
+- name: Create glusterfs volume
+  gluster_volume:
+    state: present
+    name: "{{ glusterfs_vol_name }}"
+    bricks: "{{ glusterfs_brick_dir }}"
+    cluster: "{{ ansible_play_hosts }}"
+    force: true
+  run_once: true
+
+- name: Create mount point
+  file:
+    path: "{{ glusterfs_mount_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Mount gluster volume
+  shell: mount -t glusterfs {{ glusterfs_leader }}:/{{ glusterfs_vol_name }} {{ glusterfs_mount_dir  }}
+
