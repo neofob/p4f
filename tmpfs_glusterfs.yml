@@ -1,6 +1,5 @@
 ---
-- import_playbook: bootstrap.yml
-
+# Use cloud-config.yml to bootstrap
 - hosts: all
   become: yes
   vars_files:
