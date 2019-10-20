@@ -5,8 +5,9 @@ package_upgrade: true
 
 packages:
   - python3
-  - python-apt
-  - python-pip
+  - python3-setuptools
+  - python3-apt
+  - python3-pip
   - mc
   - vim
   - sysstat
