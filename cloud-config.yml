@@ -4,9 +4,12 @@ package_update: true
 package_upgrade: true
 
 packages:
-  - python
+  - python3
   - python-apt
+  - python-pip
   - mc
+  - vim
+  - sysstat
 
 power_state:
   delay: "now"
