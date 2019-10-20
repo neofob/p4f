@@ -11,6 +11,7 @@ packages:
   - mc
   - vim
   - sysstat
+  - apt-show-versions
 
 power_state:
   delay: "now"
