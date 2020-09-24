@@ -1,0 +1,17 @@
+---
+all:
+  # all hosts
+  hosts:
+    # use hostname in your .ssh/config, internal ip address, or public ip address
+    droplet0.int:
+    droplet1.int:
+    droplet2.int:
+  children:
+    # per datacenter
+    nyc3:
+      hosts:
+        droplet0.int:
+        droplet1.int:
+    sf2:
+      hosts:
+        droplet2.int:

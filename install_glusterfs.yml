@@ -1,0 +1,11 @@
+---
+# ansible-galaxy install --force geerlingguy.glusterfs
+# ansible-playbook -i inventory --limit=mygroup install_glusterfs.yml
+- hosts: all
+  become: yes
+  vars:
+    - glusterfs_ppa_version: "8"
+
+  # install glusterfs-{server, client}
+  roles:
+    - geerlingguy.glusterfs
