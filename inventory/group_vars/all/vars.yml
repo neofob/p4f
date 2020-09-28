@@ -1,0 +1,40 @@
+---
+# Default variables for all ephemeral nodes
+
+sysctl_list:
+  - name: "vm.dirty_writeback_centisecs"
+    value: 60000
+    state: present
+  - name: "vm.dirty_ratio"
+    value: 80
+    state: present
+  - name: "vm.dirty_background_ratio"
+    value: 50
+    state: present
+  - name: "vm.swappiness"
+    value: 1
+    state: present
+  - name: "vm.vfs_cache_pressure"
+    value: 100
+    state: present
+  - name: "vm.page-cluster"
+    value: 0
+    state: present
+
+package_list:
+  - bc
+  - bison
+  - build-essential
+  - chrony
+  - flex
+  - git
+  - libelf-dev
+  - libssl-dev
+  - mc
+  - python3-pip
+  - sshfs
+  - sysstat
+  - vim-nox
+  - virtualenv
+  - virtualenvwrapper
+  - xz-utils
