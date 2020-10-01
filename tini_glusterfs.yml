@@ -1,14 +1,6 @@
 ---
 # Use cloud-config.yml to bootstrap
-- hosts: '{{ target }}'
+- hosts: all
   become: yes
-  vars_files:
-    - vars/tini_glusterfs.yml
-  vars:
-    - glusterfs_ppa_version: "6"
-
-  # install glusterfs-{server, client}
-  roles:
-    - geerlingguy.glusterfs
   tasks:
     - include_tasks: tasks/setup_t_glusterfs.yml

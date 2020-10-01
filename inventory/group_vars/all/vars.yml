@@ -38,3 +38,9 @@ package_list:
   - virtualenv
   - virtualenvwrapper
   - xz-utils
+
+
+# Glusterfs setup for tini_glusterfs
+glusterfs_brick_dir: /opt/brick0
+glusterfs_vol_name: tinivol
+glusterfs_mount_dir: /mnt/tinivol
