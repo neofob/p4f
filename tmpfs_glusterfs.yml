@@ -4,13 +4,7 @@
   become: yes
   vars_files:
     - vars/tmpfs_glusterfs.yml
-  vars:
-    - glusterfs_ppa_version: "6"
       
-  # install glusterfs-{server, client}
-  roles:
-    - geerlingguy.glusterfs
-
   tasks:
     - include_tasks: tasks/setup_tmpfs.yml
     - include_tasks: tasks/create_gluster_vol.yml

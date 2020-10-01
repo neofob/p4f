@@ -1,6 +1,5 @@
 ---
 - name: Setup brick dir
-  become: yes
   file:
     path: "{{ glusterfs_brick_dir }}"
     state: directory
