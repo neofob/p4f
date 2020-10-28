@@ -4,10 +4,24 @@ package_update: true
 package_upgrade: true
 
 packages:
-  - python
-  - python-apt
+  - python3-minimal
+  - python3-apt
+  - python3-pip
   - mc
-
+  - bc
+  - vim-nox
+  - git
+  - gcc
+  - build-essential
+  - pv
+  - xz
+  - virtualenv
+  - virtualenvwrapper
+  - chrony
+  - bison
+  - flex
+  - libssl-dev
+  - libelf-dev
 power_state:
   delay: "now"
   mode: reboot
