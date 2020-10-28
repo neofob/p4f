@@ -3,7 +3,8 @@
 
 - name: Setup tmpfs mount for /tmp
   ansible.posix.mount:
+    src: tmpfs
     path: /tmp
-    state: remounted
+    state: mounted
     opts: "noatime,defaults"
     fstype: tmpfs

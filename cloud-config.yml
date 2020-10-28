@@ -4,14 +4,32 @@ package_update: true
 package_upgrade: true
 
 packages:
-  - python3
-  - python3-setuptools
-  - python3-apt
-  - python3-pip
-  - mc
-  - vim
-  - sysstat
   - apt-show-versions
+  - bc
+  - bison
+  - build-essential
+  - chrony
+  - flex
+  - gcc
+  - git
+  - libelf-dev
+  - libssl-dev
+  - mc
+  - mc
+  - pv
+  - python3
+  - python3-apt
+  - python3-apt
+  - python3-minimal
+  - python3-pip
+  - python3-pip
+  - python3-setuptools
+  - sysstat
+  - vim
+  - vim-nox
+  - virtualenv
+  - virtualenvwrapper
+  - xz
 
 power_state:
   delay: "now"

@@ -30,6 +30,7 @@ package_list:
   - git
   - libelf-dev
   - libssl-dev
+  - lm-sensors
   - mc
   - python3-pip
   - sshfs
