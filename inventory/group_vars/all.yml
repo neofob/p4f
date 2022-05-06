@@ -40,7 +40,9 @@ package_list:
   - libelf-dev
   - libssl-dev
   - lm-sensors
+  - lz4
   - mc
+  - pv
   - python3-pip
   - sshfs
   - sysstat
@@ -49,8 +51,6 @@ package_list:
   - virtualenvwrapper
   - xz-utils
   - zstd
-  - lz4
-  - pv
 
 # Glusterfs setup for tini_glusterfs
 glusterfs_brick_dir: /opt/brick0
