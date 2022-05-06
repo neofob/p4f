@@ -1,28 +1,20 @@
 ---
-- hosts: all
-  become: yes
+# Reference: https://gist.github.com/rbq/886587980894e98b23d0eee2a1d84933
+# Example:
+# ansible-playbook -i digital_ocean.py -e target=ansible ./docker.yml
+- hosts: "{{ target }}"
   tasks:
-  - name: Install prerequisites for Docker repository
-    apt:
-      name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common']
-      update_cache: yes
-
-  - name: Add Docker GPG key
+  - name:    Install prerequisites
+    apt:     name={{item}} update_cache=yes
+    with_items:
+     - apt-transport-https
+     - ca-certificates
+     - curl
+     - software-properties-common
+  - name:    Add Docker GPG key
     apt_key: url=https://download.docker.com/linux/ubuntu/gpg
-
-  - name: Add Docker APT repository
+  - name:    Add Docker APT repository
     apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
-
-  - name: Install Docker CE
-    apt:
-      name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
-      update_cache: yes
-
-  - name: Install prerequisites for docker-compose
-    apt:
-      name: ['python3-pip', 'python3-setuptools', 'virtualenv']
-
-  - name: Install docker-compose
-    pip:
-      name: docker-compose
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+  - name:    Install Docker
+    apt:     name=docker-ce
