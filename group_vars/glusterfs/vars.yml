@@ -2,7 +2,7 @@
 # Default Glusterfs configuration
 #
 
-glusterfs_ppa_version: "6"
+glusterfs_ppa_version: "9"
 
 #glusterfs_mount_dir: /mnt/tvol
 #glusterfs_brick_dir: /data/glusterfs/tmpfs/brick0

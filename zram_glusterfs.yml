@@ -6,7 +6,7 @@
   vars_files:
     - vars/zram_glusterfs.yml
   vars:
-    - glusterfs_ppa_version: "6"
+    - glusterfs_ppa_version: "8"
 
   # install glusterfs-{server, client}
   roles:

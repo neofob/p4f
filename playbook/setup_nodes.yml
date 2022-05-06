@@ -1,8 +1,5 @@
 ---
 # Setup ephemeral nodes
-#
-
-
 - hosts: all
   become: yes
   tasks:

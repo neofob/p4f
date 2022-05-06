@@ -20,6 +20,15 @@ sysctl_list:
   - name: "vm.page-cluster"
     value: 0
     state: present
+  - name: "net.ipv6.conf.all.disable_ipv6"
+    value: 1
+    state: present
+  - name: "net.ipv6.conf.default.disable_ipv6"
+    value: 1
+    state: present
+  - name: "net.ipv6.conf.lo.disable_ipv6"
+    value: 1
+    state: present
 
 package_list:
   - bc
@@ -39,7 +48,9 @@ package_list:
   - virtualenv
   - virtualenvwrapper
   - xz-utils
-
+  - zstd
+  - lz4
+  - pv
 
 # Glusterfs setup for tini_glusterfs
 glusterfs_brick_dir: /opt/brick0
